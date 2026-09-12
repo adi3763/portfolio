@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Full-Stack Developer",
+  title: "Aditya Anand | Full-Stack Developer",
   description:
     "Full-stack developer building websites, web apps and APIs, with ongoing maintenance.",
 };

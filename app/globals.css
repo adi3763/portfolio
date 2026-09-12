@@ -6,6 +6,17 @@
   --color-muted: #9a9a9a;
   --color-accent: #e3170a;
   --color-glow: #912022;
+
+  --animate-marquee: marquee 50s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @theme inline {

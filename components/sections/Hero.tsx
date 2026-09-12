@@ -1,3 +1,4 @@
+import HeroOrb from "@/components/HeroOrb";
 import { site } from "@/lib/site";
 
 function Avatar() {
@@ -22,13 +23,8 @@ function Avatar() {
 function ObjectSlot() {
   return (
     <div className="flex flex-col items-center">
-      <div
-        data-slot="hero-3d-object"
-        className="grid aspect-square w-48 place-items-center rounded-full border border-dashed border-white/25 sm:w-64 lg:w-[21rem]"
-      >
-        <span className="px-8 text-center text-xs text-white/40">
-          {site.hero.objectCaption}
-        </span>
+      <div className="relative aspect-square w-60 sm:w-72 lg:w-[21rem]">
+        <HeroOrb className="absolute inset-0" />
       </div>
     </div>
   );
