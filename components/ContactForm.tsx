@@ -56,29 +56,20 @@ export default function ContactForm() {
     setTouched({ name: true, email: true, phone: true, service: true, message: true });
     if (Object.keys(found).length > 0) return;
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-    if (!accessKey) {
-      setStatus("error");
-      setFeedback("The contact form isn't connected yet. Please try again later.");
-      return;
-    }
-
     const honeypot = new FormData(event.currentTarget).get("botcheck");
     setStatus("sending");
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New project enquiry from ${values.name.trim()}`,
-          from_name: "Portfolio contact form",
-          botcheck: honeypot ? "on" : "",
-          ...values,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, botcheck: honeypot ? "on" : "" }),
       });
-      const result = await response.json();
-      if (!response.ok || !result.success) throw new Error(result.message);
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        setStatus("error");
+        setFeedback(result.message || "Something went wrong sending your message. Please try again.");
+        return;
+      }
       setStatus("sent");
       setFeedback("Thanks! Your message is on its way. I'll reply within 24 hours.");
       setValues(empty);
