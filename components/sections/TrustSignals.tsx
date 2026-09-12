@@ -1,15 +1,11 @@
-export default function TrustSignals() {
+﻿export default function TrustSignals() {
   return (
-    <section
-      id="trust-signals"
-      className="border-b border-ink/10 px-6 py-24 md:px-12"
-    >
-      <h2 className="font-heading text-3xl font-semibold text-ink md:text-4xl">
+    <section id="trust-signals" className="px-6 py-32 md:px-12">
+      <h2 className="max-w-3xl text-4xl leading-tight font-normal tracking-tight text-foreground md:text-6xl">
         Trust signals placeholder heading
       </h2>
-      <p className="mt-4 max-w-md font-body leading-relaxed text-secondary">
-        Placeholder copy for credibility markers — testimonials, client
-        logos, or reliability metrics.
+      <p className="mt-6 max-w-md leading-relaxed text-muted">
+        Placeholder copy for testimonials, clients and results.
       </p>
     </section>
   );
